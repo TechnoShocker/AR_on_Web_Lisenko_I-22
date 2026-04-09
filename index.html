@@ -2,9 +2,16 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>AR Custom Marker Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR MindAR Demo</title>
     <style>
         body { margin: 0; overflow: hidden; }
+        #container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
         #info {
             position: absolute;
             top: 10px;
@@ -15,6 +22,9 @@
             font-family: Arial, sans-serif;
             font-size: 14px;
             z-index: 100;
+        }
+        #info a {
+            color: #3498db;
         }
         #loading {
             position: absolute;
@@ -49,19 +59,27 @@
 </head>
 <body>
     <div id="info">
-        <strong>Кастомний маркер AR</strong><br>
+        <strong>MindAR Image Tracking</strong><br>
         1. Куб (зелений) - MeshStandardMaterial<br>
         2. Сфера (синя) - MeshPhongMaterial<br>
-        3. Тор (червоний) - MeshLambertMaterial
+        3. Тор (червоний) - MeshLambertMaterial<br><br>
+        <a href="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.png" target="_blank">Відкрити маркер</a>
     </div>
-    <div id="loading">Завантаження... Ініціалізація камери...</div>
+    <div id="loading">Завантаження... Ініціалізація MindAR...</div>
     <div id="error"></div>
+    <div id="container"></div>
 
-    <!-- Three.js (сумісна версія з AR.js) -->
-    <script src="https://unpkg.com/three@0.120.1/build/three.min.js"></script>
-    <!-- AR.js -->
-    <script src="https://cdn.jsdelivr.net/npm/ar.js@2.2.2/three.js/build/ar.js"></script>
+    <!-- Three.js ES Module -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.150.1/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.150.1/examples/jsm/"
+        }
+    }
+    </script>
+
     <!-- Головний скрипт -->
-    <script src="main.js"></script>
+    <script type="module" src="main.js"></script>
 </body>
 </html>
